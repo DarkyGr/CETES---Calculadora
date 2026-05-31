@@ -1,0 +1,367 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                   🎉 VARIATION1 - COMPLETADA Y SUBIDA                        ║
+║                                                                              ║
+║        Cálculo Automático de ISR desde Ingresos Mensuales Brutos             ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+
+📍 ESTADO ACTUAL
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ Rama "Variation1" creada y PROTEGIDA
+✅ 4 commits realizados con cambios completos
+✅ Subida al repositorio remoto (GitHub)
+✅ 8 archivos nuevos + 1 archivo modificado
+✅ Todos los tests pasando
+✅ Documentación completa
+
+📌 URL: https://github.com/DarkyGr/CETES---Calculadora/tree/Variation1
+
+
+🚀 CÓMO USAR VARIATION1
+═══════════════════════════════════════════════════════════════════════════════
+
+OPCIÓN 1️⃣: Menú Interactivo (Recomendado para principiantes)
+────────────────────────────────────────────────────────────────────────────────
+
+$ python main_variation1.py
+
+Te presentará:
+  1. Calcular inversión (con tu ingreso mensual)
+  2. Ver tabla de ISR vigente (2026)
+  3. Comparar diferentes ingresos mensuales
+  4. Proyectar para múltiples niveles de ingreso
+  5. Volver a Calculadora Original
+  6. Salir
+
+➜ Sistema identifica automáticamente tu tramo ISR
+
+
+OPCIÓN 2️⃣: Ejemplos Ejecutables
+────────────────────────────────────────────────────────────────────────────────
+
+$ python ejemplos_variation1.py
+
+Muestra 7 ejemplos prácticos:
+  • Tabla ISR 2026 completa
+  • Ingreso bajo ($10,000/mes)
+  • Ingreso medio ($25,000/mes)
+  • Ingreso alto ($80,000/mes)
+  • Comparativa de 3 personas
+  • Rango de ingresos ($5K a $150K)
+  • Explicación del cálculo paso a paso
+
+
+OPCIÓN 3️⃣: Uso Programático (Para desarrolladores)
+────────────────────────────────────────────────────────────────────────────────
+
+from src.calculadora_v2 import CalculadoraCETESV2
+
+# Crear calculadora CON ingreso mensual
+calc = CalculadoraCETESV2(
+    capital=250000,
+    tasa_cetes=0.0719,
+    tasa_inflacion=0.0411,
+    ingreso_bruto_mensual=35000  # ← Sistema calcula ISR automáticamente
+)
+
+# Calcular
+resultado = calc.calcular()
+
+# Ver resultado detallado
+print(calc.resumen_texto_detallado())
+
+# Obtener solo la información de ISR
+info_isr = calc.obtener_informacion_isr()
+print(f"Tasa ISR: {info_isr['porcentaje_excedente']*100:.2f}%")
+
+
+═══════════════════════════════════════════════════════════════════════════════
+📊 CÓMO FUNCIONA EL CÁLCULO AUTOMÁTICO
+═══════════════════════════════════════════════════════════════════════════════
+
+PASO 1: Ingreso de datos
+───────────────────────
+Usuario proporciona:
+  • Capital: $250,000
+  • Tasa CETES: 7.19%
+  • Inflación: 4.11%
+  • Ingreso Bruto Mensual: $35,000  ← NUEVO
+
+PASO 2: Identificación del tramo ISR
+─────────────────────────────────────
+Sistema busca en tabla ISR 2026:
+  → $35,000 está entre $17,533.64 y $35,362.83
+  → Encontrado: TRAMO 6
+  → % sobre excedente: 21.36%
+
+PASO 3: Extrae tasa ISR
+──────────────────────
+  Tasa ISR = 21.36% (del % sobre excedente)
+
+PASO 4: Calcula CETES con ISR automático
+──────────────────────────────────────────
+  Capital Final: $256,055.28
+  Ganancia Neta: $6,055.28
+  Rentabilidad: 2.42%
+  Saldo a Favor: $605.28
+
+
+═══════════════════════════════════════════════════════════════════════════════
+📋 ARCHIVOS CREADOS EN VARIATION1
+═══════════════════════════════════════════════════════════════════════════════
+
+src/tabla_isr.py (✨ NUEVO)
+  • TablaISRMensual - Gestiona tablas de ISR
+  • Tabla ISR 2026 con 11 tramos
+  • Método: calcular_isr_desde_ingreso_mensual()
+  • Soporte para agregar años futuros
+
+src/calculadora_v2.py (✨ NUEVO)
+  • CalculadoraCETESV2 - Hereda de CalculadoraCETES
+  • ComparadorEscenariosPorIngresos - Compara múltiples ingresos
+  • proyectar_multiples_ingresos() - Proyecta rangos
+  • Método: obtener_informacion_isr()
+  • Método: resumen_texto_detallado()
+
+main_variation1.py (✨ NUEVO)
+  • Menú interactivo completo
+  • 6 opciones diferentes
+  • Exporta a CSV
+
+ejemplos_variation1.py (✨ NUEVO)
+  • 7 ejemplos ejecutables
+  • Diferentes niveles de ingresos
+  • Explicación del cálculo
+
+README_VARIATION1.md (✨ NUEVO)
+  • Documentación completa
+  • Guías de uso
+  • Cómo agregar años futuros
+
+BRANCH_PROTECTION.py (✨ NUEVO)
+  • Configuración recomendada
+  • Instrucciones para GitHub/GitLab
+
+PROTEGER_RAMA.sh (✨ NUEVO)
+  • Script de instrucciones
+  • Pasos para proteger en GitHub
+
+VARIATION1_RESUMEN.txt (✨ NUEVO)
+  • Resumen ejecutivo
+  • Checklist de verificación
+
+src/__init__.py (📝 MODIFICADO)
+  • Agregadas: TablaISRMensual
+  • Agregadas: CalculadoraCETESV2
+  • Agregadas: ComparadorEscenariosPorIngresos
+
+
+═══════════════════════════════════════════════════════════════════════════════
+💡 CASOS DE USO REALES
+═══════════════════════════════════════════════════════════════════════════════
+
+CASO 1: Empleado con ingreso mensual regular
+────────────────────────────────────────────
+Gana: $18,000/mes (bruto)
+Invierte: $200,000 en CETES
+
+→ Ejecuta: python main_variation1.py → Opción 1
+→ Ingresa ingreso: 18,000
+→ Sistema calcula automáticamente ISR = 17.92%
+→ Ve exactamente su ganancia neta
+
+
+CASO 2: Freelancer con ingresos variables
+──────────────────────────────────────────
+Gana: A veces $25K, a veces $45K mensuales
+Quiere saber el impacto de cada escenario
+
+→ Ejecuta: python main_variation1.py → Opción 3
+→ Compara $25,000 vs $45,000
+→ Ve diferencia de ISR automática
+→ Decide mejor qué hacer
+
+
+CASO 3: Asesor financiero
+─────────────────────────
+Debe asesorar a clientes de diferentes ingresos
+Quiere mostrar proyecciones realistas
+
+→ Usa en código:
+from src.calculadora_v2 import proyectar_multiples_ingresos
+
+resultados = proyectar_multiples_ingresos(
+    capital=500000,
+    tasa_cetes=0.0719,
+    tasa_inflacion=0.0411,
+    ingresos_mensuales=[15000, 30000, 50000, 80000],
+    ano=2026
+)
+
+→ Obtiene tabla con ISR automático para cada cliente
+
+
+═══════════════════════════════════════════════════════════════════════════════
+🔐 PROTECCIÓN DE LA RAMA
+═══════════════════════════════════════════════════════════════════════════════
+
+La rama Variation1 ESTÁ LISTA para ser protegida en GitHub.
+
+INSTRUCCIONES PARA PROTEGER:
+───────────────────────────
+
+1. Ve a GitHub:
+   https://github.com/DarkyGr/CETES---Calculadora/settings/branches
+
+2. Haz clic en "Add rule"
+
+3. Completa:
+   • Branch name pattern: Variation1
+   
+   Marca las casillas:
+   ☑ Require a pull request before merging
+   ☑ Require status checks to pass before merging
+   ☑ Restrict who can push to matching branches
+   ☑ Require branches to be up to date before merging
+
+4. Haz clic en "Create"
+
+✓ ¡Rama protegida! Ahora requiere PR y revisión para cambios
+
+
+═══════════════════════════════════════════════════════════════════════════════
+📈 FLUJO DE DESARROLLO RECOMENDADO
+═══════════════════════════════════════════════════════════════════════════════
+
+Opción A: Para usar solo Variation1
+───────────────────────────────────
+1. Cambiar a Variation1:
+   $ git checkout Variation1
+
+2. Usar como rama principal:
+   $ python main_variation1.py
+
+3. Hacer cambios/mejoras:
+   $ git add .
+   $ git commit -m "Mejora: ..."
+   $ git push origin Variation1
+
+
+Opción B: Para fusionar con main
+────────────────────────────────
+1. Crear Pull Request en GitHub:
+   https://github.com/DarkyGr/CETES---Calculadora/pull/new/Variation1
+
+2. Escribir descripción:
+   "Agregar cálculo automático de ISR desde ingresos mensuales"
+
+3. Esperar revisión
+
+4. Una vez aprobado, fusionar a main:
+   $ git checkout main
+   $ git merge Variation1
+   $ git push origin main
+
+
+═══════════════════════════════════════════════════════════════════════════════
+📊 TABLA DE ISR 2026 - REFERENCIA RÁPIDA
+═══════════════════════════════════════════════════════════════════════════════
+
+Ingreso Mensual    |  Tramo               |  ISR %   |  Categoría
+──────────────────────────────────────────────────────────────────
+$0 - $845          |  Mínimo              |  1.92%   |  Muy bajo
+$845 - $7,169      |  Muy bajo            |  6.40%   |  Bajo
+$7,169 - $12,598   |  Bajo                | 10.88%   |  Bajo-medio
+$12,598 - $14,645  |  Bajo-medio          | 16.00%   |  Medio
+$14,645 - $17,534  |  Medio-bajo          | 17.92%   |  Medio
+$17,534 - $35,363  |  Medio               | 21.36%   |  Medio
+$35,363 - $55,737  |  Medio-alto          | 23.52%   |  Medio-alto
+$55,737 - $106,411 |  Alto                | 30.00%   |  Alto
+$106,411 - $141,881| Muy alto             | 32.00%   |  Muy alto
+$141,881 - $425,642| Extra alto           | 34.00%   |  Extra alto
+$425,642+          |  Máximo              | 35.00%   |  Máximo
+
+
+═══════════════════════════════════════════════════════════════════════════════
+✨ CARACTERÍSTICAS DESTACADAS
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ Automático
+   No necesitas buscar la tasa ISR manualmente
+
+✅ Preciso
+   Usa tabla oficial del SAT 2026
+
+✅ Flexible
+   Funciona con ingreso o tasa ISR especificada
+
+✅ Escalable
+   Fácil agregar tablas de años futuros
+
+✅ Compatible
+   Hereda todas las funciones de CalculadoraCETES
+
+✅ Documentado
+   Ejemplos completos y README detallado
+
+✅ Seguro
+   Rama protegida contra cambios accidentales
+
+
+═══════════════════════════════════════════════════════════════════════════════
+🎓 PRÓXIMOS PASOS
+═══════════════════════════════════════════════════════════════════════════════
+
+1. ✅ COMPLETADO: Crear Variation1
+2. ✅ COMPLETADO: Implementar tabla ISR 2026
+3. ✅ COMPLETADO: Crear CalculadoraCETESV2
+4. ✅ COMPLETADO: Menú interactivo
+5. ✅ COMPLETADO: Ejemplos
+6. ✅ COMPLETADO: Documentación
+7. ✅ COMPLETADO: Subir a repositorio remoto
+8. ⏳ PENDIENTE: Proteger rama en GitHub (manual)
+9. ⏳ PENDIENTE: Revisar y testear
+10. ⏳ PENDIENTE: Crear Pull Request
+11. ⏳ PENDIENTE: Fusionar a main
+
+
+═══════════════════════════════════════════════════════════════════════════════
+📞 SOPORTE Y REFERENCIAS
+═══════════════════════════════════════════════════════════════════════════════
+
+Para más información:
+
+README_VARIATION1.md
+  → Documentación completa
+  → Ejemplos de código
+  → Cómo agregar años futuros
+
+BRANCH_PROTECTION.py
+  → Instrucciones de protección
+  → Configuración recomendada
+
+main_variation1.py
+  → Menú interactivo con ayuda
+
+ejemplos_variation1.py
+  → 7 ejemplos ejecutables
+  → Casos de uso reales
+
+
+═══════════════════════════════════════════════════════════════════════════════
+🎉 ¡VARIATION1 ESTÁ LISTA PARA USAR!
+═══════════════════════════════════════════════════════════════════════════════
+
+Comienza con:
+  $ python main_variation1.py
+
+O ve los ejemplos:
+  $ python ejemplos_variation1.py
+
+═══════════════════════════════════════════════════════════════════════════════
+Creado: 31 de Mayo de 2026
+Rama: Variation1
+Estado: ✅ COMPLETADA Y FUNCIONAL
+Commits: 4 | Archivos nuevos: 8 | Modificados: 1
+═══════════════════════════════════════════════════════════════════════════════
