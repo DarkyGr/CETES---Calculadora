@@ -1,0 +1,8 @@
+# Dependencias para Calculadora de CETES
+# No hay dependencias externas requeridas
+# Solo Python 3.6+ con librerías estándar
+
+# Opcional: para desarrollo
+# pytest>=6.0        # Para ejecutar tests
+# black>=21.0        # Para formatear código
+# flake8>=3.9        # Para linting
